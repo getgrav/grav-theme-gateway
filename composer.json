@@ -1,0 +1,28 @@
+{
+    "name": "getgrav/grav-theme-gateway",
+    "type": "grav-theme",
+    "description": "Gateway incorporates elegant style with user friendly customizer options making it perfectly suited for a variety of Grav users.",
+    "keywords": ["theme","grav"],
+    "homepage": "http://getgrav.org",
+    "license": "MIT",
+    "support": {
+        "irc": "irc://irc.freenode.org/grav"
+    },
+    "authors": [
+        {
+            "name": "Team Grav",
+            "email": "devs@getgrav.org",
+            "homepage": "http://getgrav.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "installer-name": "gateway",
+        "installer-paths": {
+            "user/themes/{$name}/": ["getgrav/grav-theme-gateway"]
+        }
+    }
+}
