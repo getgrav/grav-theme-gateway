@@ -1,9 +1,2 @@
 enabled: true
 default_lang: en
-
-streams:
-  schemes:
-    theme:
-      type: ReadOnlyStream
-      paths:
-        - user/themes/gateway
