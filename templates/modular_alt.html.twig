@@ -10,7 +10,6 @@
     {{ parent() }}
 {% endblock %}
 
-
 {% block bottom %}
     {{ parent() }}
     {% if show_onpage_menu %}
@@ -26,11 +25,9 @@
     {% endif %}
 {% endblock %}
 
-
 {% block header_navigation %}
     {% if show_onpage_menu %}
         <ul class="navigation">
-        
         {% macro loop(page) %}
         {% for p in page.children %}
             {% if p.visible %}
@@ -49,8 +46,6 @@
             {% endif %}
         {% endfor %}
         {% endmacro %}
-
-
         {% if config.themes.gateway.dropdown.enabled %}
             {{ _self.loop(pages) }}
         {% else %}
@@ -61,6 +56,7 @@
                         <a href="{{ page.url }}" class="external">
                             {% if page.header.icon %}<i class="fa fa-{{ page.header.icon }}"></i>{% endif %}
                             {{ page.menu }}
+							
                         </a>
                     </li>
                 {% endif %}
@@ -86,6 +82,12 @@
 {% endblock %}
 
 {% block content %}
+    {% set blog_image = page.media.images|first %}
+    {% if blog_image %}
+    <div class="flush-top blog-header blog-header-image" style="background: {{ page.header.bg_color }} url({{ blog_image.url }}) no-repeat right;">
+    <h1>{{ page.title }}</h1>
+    </div>
+    {% endif %}
     {{ page.content }}
     {% for module in page.collection() %}
         <div id="{{ _self.pageLinkName(module.menu) }}"></div>

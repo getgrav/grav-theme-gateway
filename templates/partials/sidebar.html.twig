@@ -1,6 +1,3 @@
-{% set feed_url = blog.url == '/' or blog.url == base_url_relative ? (base_url_relative~'/'~blog.slug) : blog.url %}
-{% set new_base_url = blog.url == '/' ? '' : blog.url %}
-
 {% if config.plugins.simplesearch.enabled %}
 <div class="sidebar-content">
     <h4>SimpleSearch</h4>
@@ -8,13 +5,15 @@
 </div>
 {% endif %}
 {% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+<div class="sidebar-content">
     <h4>Related Posts</h4>
     {% include 'partials/relatedpages.html.twig' %}
+</div>
 {% endif %}
 {% if config.plugins.random.enabled %}
 <div class="sidebar-content">
 	<h4>Random Article</h4>
-	<a class="button" href="{{ base_url }}/random"><i class="fa fa-retweet"></i> I'm Feeling Lucky!</a>
+	<a class="button" href="{{ base_url_relative }}/random"><i class="fa fa-retweet"></i> I'm Feeling Lucky!</a>
 </div>
 {% endif %}
 <div class="sidebar-content">
@@ -24,13 +23,13 @@
 {% if config.plugins.taxonomylist.enabled %}
 <div class="sidebar-content">
     <h4>Popular Tags</h4>
-    {% include 'partials/taxonomylist.html.twig' with {'base_url':new_base_url, 'taxonomy':'tag'} %}
+    {% include 'partials/taxonomylist.html.twig' with {'taxonomy':'tag'} %}
 </div>
 {% endif %}
 {% if config.plugins.archives.enabled %}
 <div class="sidebar-content">
     <h4>Archives</h4>
-	{% include 'partials/archives.html.twig' with {'base_url':new_base_url} %}
+	{% include 'partials/archives.html.twig' %}
 </div>
 {% endif %}
 {% if config.plugins.feed.enabled %}

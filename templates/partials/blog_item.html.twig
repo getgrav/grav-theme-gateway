@@ -1,15 +1,12 @@
 <div class="list-item">
 
-    {% set header_image = page.header.header_image|defined(true) %}
-    {% set header_image_width  = page.header.header_image_width|defined(900) %}
-    {% set header_image_height = page.header.header_image_height|defined(300) %}
-    {% set header_image_file = page.header.header_image_file %}
-
     <div class="list-blog-header">
-        <span class="list-blog-date">
-            <span>{{ page.date|date("d") }}</span>
-            <em>{{ page.date|date("M") }}</em>
-        </span>
+        {% if big_header %}
+            {{ page.media.images|first.cropResize(900,600).html }}
+        {% else %}
+            {{ page.media.images|first.cropZoom(900,300).html }}
+        {% endif %}
+
         {% if page.header.link %}
             <h4>
                 {% if page.header.continue_link is not sameas(false) %}
@@ -21,43 +18,44 @@
             <h4><a href="{{ page.url }}">{{ page.title }}</a></h4>
         {% endif %}
 
-        {% if page.taxonomy.tag %}
-        <span class="tags">
-            {% for tag in page.taxonomy.tag %}
-            <a href="{{ blog.url|rtrim('/') }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag }}</a>
-            {% endfor %}
+        <span class="list-blog-date">
+            <i class="fa fa-calendar"></i>
+            {{ page.date|date("d") }}, {{ page.date|date("M") }}
+        </span>
+        
+        {% if page.header.author %}
+        <span class="list-blog-author">
+            <i class="fa fa-user"></i>
+            {{ page.header.author }}
         </span>
         {% endif %}
-        {% if header_image %}
-            {% if header_image_file %}
-                {% set header_image_media = page.media.images[header_image_file] %}
-            {% else %}
-                {% set header_image_media = page.media.images|first %}
-            {% endif %}
-            {{ header_image_media.cropZoom(header_image_width, header_image_height).html }}
+       
+       {% if page.taxonomy.tag %}
+        <ul class="tags">
+            <i class="fa fa-tag"></i>
+            {% for tag in page.taxonomy.tag %}
+            <li><a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag }}</a></li>
+            {% endfor %}
+        </ul>
         {% endif %}
-
+        
     </div>
 
     <div class="list-blog-padding">
 
     {% if page.header.continue_link is sameas(false) %}
-        {{ page.content }}
+        <p>{{ page.content }}</p>
         {% if not truncate %}
         {% set show_prev_next = true %}
         {% endif %}
     {% elseif truncate and page.summary != page.content %}
-        {{ page.summary }}
+        <p>{{ page.summary }}</p>
         <p><a href="{{ page.url }}">Continue Reading...</a></p>
     {% elseif truncate %}
-        {% if page.summary != page.content %}
-            {{ page.content|truncate(550) }}
-        {% else %}
-            {{ page.content }}
-        {% endif %}
+        <p>{{ page.content|truncate(550) }}</p>
         <p><a href="{{ page.url }}">Continue Reading...</a></p>
     {% else %}
-        {{ page.content }}
+        <p>{{ page.content }}</p>
         {% set show_prev_next = true %}
     {% endif %}
 

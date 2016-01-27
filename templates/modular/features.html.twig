@@ -1,5 +1,8 @@
 <div class="modular-row features {{ page.header.class}}">
     {{ content }}
+    {% for button in page.header.buttons %}
+        <a class="button{% if button.primary %} primary{% endif %}" href="{{ button.url }}">{{ button.text }}</a>
+    {% endfor %}
     <div class="feature-items">
     {% for feature in page.header.features %}
            <div class="feature">
@@ -14,6 +17,7 @@
             {% endif %}
             {% if feature.text %}
             <p>{{ feature.text }}</p>
+            <p><a href="{{ feature.linkurl }}">{{ feature.linktext }}</a></p>
             {% endif %}
             </div>
         </div>
