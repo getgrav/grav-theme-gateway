@@ -45,6 +45,10 @@
             {% block content %}{% endblock %}
         </div>
         {% endblock %}
+
+        {% block footer %}
+          {% include 'partials/footer.html.twig' %}
+        {% endblock %}
     </div>
 </body>
 </html>
