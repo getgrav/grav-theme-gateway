@@ -10,6 +10,7 @@
 
     {% block stylesheets %}
         {% do assets.addCss('theme://fonts/css/font-awesome.css',100) %}
+        {% do assets.addCss('theme://css/rescue_shortcodes_styles.css') %}
         {% do assets.addCss('theme://css/app.css') %}
         {% do assets.addCss('theme://css/style.css') %}
     {% endblock %}
@@ -42,10 +43,6 @@
         {% block body %}
         <div id="content" class="site-content">
             {% block content %}{% endblock %}
-
-            {% block footer %}
-            {% include 'modular/footer.html.twig' %}
-            {% endblock %}
         </div>
         {% endblock %}
     </div>
