@@ -34,6 +34,10 @@
           {% include 'partials/header.html.twig' %}
         {% endblock %}
 
+        {% block navigation %}
+          {% include 'partials/navigation.html.twig' %}
+        {% endblock %}
+
         {% block body %}
         <div id="content" class="site-content">
             {% block content %}{% endblock %}
