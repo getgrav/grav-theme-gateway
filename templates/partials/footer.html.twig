@@ -1,56 +1,58 @@
-<div class="row footer {{ page.header.class}}">
-    <div class="footer-items">
-        <div class="footer-module large">
-            <div class="logo">
-                <h3><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.title }}</a></h3>
-                {% block social %}
-                    {% include 'partials/social.html.twig' %}
-                {% endblock %}
-
+<div class="footer-wrap">
+   <div class="row">
+      <div class="large-12 columns">
+         <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="row">
+               <div class="large-4 columns">
+                  <aside id="text-5" class="widget widget_text">
+                    {% if site.footer.widget.title %}
+                     <h1 class="widget-title">{{ site.footer.widget.title }}</h1>
+                    {% endif %}
+                     <div class="textwidget">
+                       {% if site.footer.widget.description %}
+                        <p>{{ site.footer.widget.description }}</p>
+                      {% endif %}
+                        {% if site.footer.widget.link.url or site.footer.widget.link.text %}
+                        <p><a class="more-link" href="{{ site.footer.widget.link.url }}">{{ site.footer.widget.link.text }}</a></p>
+                        {% endif %}
+                     </div>
+                  </aside>
+               </div>
+               {% if config.plugins.archives.enabled %}
+               <div class="large-4 columns">
+                  <aside id="recent-posts-4" class="widget widget_recent_entries">
+                      <h1 class="widget-title">Archives</h1>
+                     	{% include 'partials/archives.html.twig' %}
+                  </aside>
+               </div>
+               {% endif %}
+               <div class="large-4 columns">
+                 {% if site.social %}
+                  <aside id="text-6" class="widget widget_text">
+                     <h1 class="widget-title">Keep In Touch</h1>
+                     <div class="textwidget">
+                       {% for item in site.social %}
+                         <a href="{{ item.url }}"><i class="fa fa-{{ item.icon }}"></i></a>
+                       {% endfor %}
+                     </div>
+                  </aside>
+                  {% endif %}
+                  {% if config.plugins.simplesearch.enabled %}
+                  <aside id="search-4" class="widget widget_search search-form">
+                     <h1 class="widget-title">Find What You Need</h1>
+                         {% include 'partials/simplesearch_searchbox.html.twig' %}
+                  </aside>
+                   {% endif %}
+               </div>
             </div>
-            {% if site.footer.description %}
-                <p>{{ site.footer.description }}</p>
+            {% if site.copyright %}
+            <div class="site-info">
+               <p>
+                  {{ site.copyright }}
+               </p>
+            </div>
             {% endif %}
-        </div>
-        <div class="footer-module"><h4>{{ site.footer.contact_title }}</h4>
-            <p>
-                {% for item in site.contact.address %}
-                    <span>{{ item.line }}</span>
-                {% endfor %}
-            </p>
-            <p>{{ site.author.email }}</p>
-            <p><strong>{{ site.contact.gps }}</strong></p>
-        </div>
-        <div class="footer-module"><h4>{{ site.footer.links_title }}</h4>
-         <ul class="quickmenu">
-            {% for module in site.quicklinks %}
-                <li><i class="fa fa-chevron-right"></i><a href="{% if "base_url:" in module.url %}{{ base_url_absolute }}/{{ module.url|replace({"base_url:": ""}) }}{% else %}{{ module.url }}{% endif %}">{{  module.text }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div class="footer-module">
-        <h4>{{ site.footer.newsletter_title }}</h4>
-        <p>{{ site.footer.newsletter_description }}</p>
-
-        <form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri={{ site.footer.feedburner }}', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true" class="newsletter">
-        <input type="text" name="email" value="Email" onclick="if(this.value=='Email')this.value='';" onblur="if(this.value=='')this.value='Email';"/>
-        <input type="hidden" value="karolorzel" name="uri"/>
-        <input type="hidden" name="loc" value="en_US"/>
-        <input type="submit" value="OK" />
-        </form>
-    </div>
-</div>
-<hr>
-<div class="footer-modules">
-    <div class="footer-copyright">
-        {{ site.author.copyright }}
-    </div>
-    <div class="footer-menu">
-    <ul class="othermenu">
-    {% for module in site.othermenu %}
-       <li><a href="{{ module.url }}">{{  module.text }}</a></li>
-    {% endfor %}
-    </ul>
-    </div>
-</div>
+         </footer>
+      </div>
+   </div>
 </div>
