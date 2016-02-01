@@ -21,21 +21,26 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div id="primary" class="content-area">
+    <div class="large-8 columns">
+      <main id="main" class="site-main" role="main">
+        {% for child in collection %}
+        <div class="row">
+          {% include 'partials/blog_item.html.twig' with {'page':child, 'truncate':true} %}
+        </div>
+        {% endfor %}
 
-<div class="content-wrapper blog-content-list g-grid pure-g-r">
-  <div id="listing" class="g-block pure-u-2-3">
-    {% for child in collection %}
-    <div class="row">
-      {% include 'partials/blog_item.html.twig' with {'page':child, 'truncate':true} %}
+        {% if config.plugins.pagination.enabled and collection.params.pagination %}
+        {% include 'partials/pagination.html.twig' with {'pagination':collection.params.pagination} %}
+        {% endif %}
+      </main>
     </div>
-    {% endfor %}
-
-    {% if config.plugins.pagination.enabled and collection.params.pagination %}
-      {% include 'partials/pagination.html.twig' with {'pagination':collection.params.pagination} %}
-    {% endif %}
-  </div>
-  <div id="sidebar" class="g-block size-1-3 pure-u-1-3">
-    {% include 'partials/sidebar.html.twig' %}
+    <div class="large-3 large-offset-1 columns">
+      <div id="secondary" class="widget-area">
+        {% include 'partials/sidebar.html.twig' %}
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
