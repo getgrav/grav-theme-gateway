@@ -11,27 +11,29 @@
       <a href="{{ page.url }}">{{ page.title }}</a>
       {% endif %}
     </h3>
+    {% if truncate %}
     <div class="entry-date">
       {{ 'MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}
     </div>
+    {% endif %}
+
     {% if not truncate %}
     <div class="entry-meta">
-      {% if page.header.author %}
-      <span class="list-blog-author">
-        <i class="fa fa-user"></i>
-        {{ page.header.author }}
+      <span class="posted-on">Posted on
+        <a href="{{ page.url }}" rel="bookmark">
+          <time class="entry-date published" datetime="{{ 'MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}">
+            {{ 'MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}
+          </time>
+        </a>
       </span>
-      {% endif %}
-      {% if page.taxonomy.tag %}
-      <ul class="tags">
-        <i class="fa fa-tag"></i>
-        {% for tag in page.taxonomy.tag %}
-        <li><a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag }}</a></li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+      <span class="byline"> by
+        <span class="author vcard">
+          {{ page.header.author }}
+        </span>
+      </span>
     </div>
     {% endif %}
+
   </header>
 
   <div class="entry-content">
@@ -68,13 +70,24 @@
     </p>
     {% endif %}
 
-    <footer class="entry-footer clearfix">
-      <span class="left">
-        <a href="{{ page.url }}#comments"><i class="fa fa-comment"></i></a>
-        <a href="{{ page.url }}"><i class="fa fa-link"></i></a>
-      </span>
-      <span class="right"></span>
-    </footer>
-
   </div>
+
+  <footer class="entry-footer clearfix">
+    <span class="left">
+      <a href="{{ page.url }}#comments"><i class="fa fa-comment"></i></a>
+      <a href="{{ page.url }}"><i class="fa fa-link"></i></a>
+    </span>
+    <span class="right">
+      {% if page.taxonomy.tag %}
+      <span class="tags-links">
+        {% for tag in page.taxonomy.tag %}
+        <a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag }}{% if not loop.last %},{% endif %}</a>
+        {% endfor %}
+      </span>
+      {% endif %}
+    </span>
+
+
+  </footer>
+
 </article>
