@@ -56,6 +56,48 @@
     <p>{{ page.content }}</p>
     {% set show_prev_next = true %}
     {% endif %}
+
+
+    {% if not truncate %}
+      <div class="sharedaddy sd-sharing-enabled">
+        <div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
+          <h3 class="sd-title">{{ 'SHARE'|t }}</h3>
+          <div class="sd-content">
+            <ul>
+              <li class="share-facebook">
+                <a rel="nofollow" data-shared="sharing-facebook-368" class="share-facebook sd-button share-icon" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url(true) }}" target="_blank" title="{{ page.header.title }}"><span>Facebook</span></a>
+              </li>
+              <li class="share-twitter">
+                <a rel="nofollow" data-shared="sharing-twitter-368" class="share-twitter sd-button share-icon" href="http://twitter.com/home?status={{ page.title|replace({' ': "%20"}) }}-{{ page.url(true) }}" target="_blank" title="{{ page.header.title }}"><span>Twitter</span></a>
+              </li>
+              <li class="share-google-plus-1">
+                <a rel="nofollow" data-shared="sharing-google-368" class="share-google-plus-1 sd-button share-icon" href="https://plus.google.com/share?url={{ page.url(true) }}" target="_blank" title="{{ page.header.title }}"><span>Google</span></a>
+              </li>
+              <li class="share-pinterest">
+                <a rel="nofollow" data-shared="sharing-pinterest-368" class="share-pinterest sd-button share-icon" href="https://www.pinterest.com/pin/create/button/?url={{ page.url(true) }}" target="_blank" title="{{ page.header.title }}"><span>Pinterest</span></a>
+              </li>
+              <li class="share-end"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-facebook').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+      windowOpen=window.open(jQuery(this).attr('href'),'wpcomfacebook','menubar=1,resizable=1,width=600,height=400');return false;});});</script>
+      <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-twitter').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+      windowOpen=window.open(jQuery(this).attr('href'),'wpcomtwitter','menubar=1,resizable=1,width=600,height=350');return false;});});</script>
+      <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-google-plus-1').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+      windowOpen=window.open(jQuery(this).attr('href'),'wpcomgoogle-plus-1','menubar=1,resizable=1,width=480,height=550');return false;});});</script>
+      {% endif %}
+
+      {% if not truncate %}
+    <div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+      <h3 class="jp-relatedposts-headline"><em>{{ 'RELATED_POSTS'|t }}</em></h3>
+      <div class="jp-relatedposts-items jp-relatedposts-items-visual">
+        {% include 'partials/relatedpages.html.twig' %}
+      </div>
+    </div>
+    <hr/>
+    {% endif %}
   </div>
 
   <footer class="entry-footer clearfix">
@@ -86,3 +128,23 @@
   </div>
 </nav>
 {% endif %}
+
+{% if not truncate %}
+    {% if config.plugins.jscomments.enabled and config.plugins.jscomments.provider %}
+    <div class="comments-area-wrapper">
+      <div class="comments-area">
+      <h2 class="comments-title">Comments:</h2>
+        {{ jscomments(config.plugins.jscomments.provider) }}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if config.plugins.comments.enabled %}
+    <div class="comments-area-wrapper">
+      <div class="comments-area">
+        <h2 class="comments-title">{{ grav.twig.comments|length }} Comments:</h2>
+        {% include 'partials/comments.html.twig' with {'page': page} %}
+      </div>
+    </div>
+    {% endif %}
+    {% endif %}
