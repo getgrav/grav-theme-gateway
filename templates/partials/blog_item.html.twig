@@ -42,21 +42,22 @@
     {% if not truncate %}
     {% set show_prev_next = true %}
     {% endif %}
+    {% elseif truncate and readmore is sameas(false) %}
+    {{ page.content|truncate(200) }}
     {% elseif truncate and page.summary != page.content %}
     <p>
-    {{ page.summary|striptags }}
-    <a href="{{ page.url }}">more...</a>
+      {{ page.summary|striptags }}
+      <a href="{{ page.url }}">more...</a>
     </p>
     {% elseif truncate %}
     <p>
-    {{ page.content|truncate(550)|striptags }}
-    <a href="{{ page.url }}">more...</a>
-  </p>
+      {{ page.content|truncate(550)|striptags }}
+      <a href="{{ page.url }}">more...</a>
+    </p>
     {% else %}
     <p>{{ page.content }}</p>
     {% set show_prev_next = true %}
     {% endif %}
-    
   </div>
 
   <footer class="entry-footer clearfix">
@@ -65,12 +66,14 @@
       <a href="{{ page.url }}"><i class="fa fa-link"></i></a>
     </span>
     <span class="right">
-      {% if page.taxonomy.tag %}
-      <span class="tags-links">
-        {% for tag in page.taxonomy.tag %}
-          <a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag }}{% if not loop.last %},{% endif %}</a>
-        {% endfor %}
-      </span>
+      {% if not truncate %}
+        {% if page.taxonomy.tag %}
+        <span class="tags-links">
+          {% for tag in page.taxonomy.tag %}
+            <a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag }}{% if not loop.last %},{% endif %}</a>
+          {% endfor %}
+        </span>
+        {% endif %}
       {% endif %}
     </span>
   </footer>
