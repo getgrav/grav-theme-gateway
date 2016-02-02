@@ -8,13 +8,13 @@
         <article class="page type-page status-publish hentry">
           <header class="entry-header">
             <h2 class="entry-title">
-              {{ form.message }}
+              {{ page.header.title }}
             </h2>
           </header>
           <div class="entry-content">
             {{ content }}
             {% if config.plugins.form.enabled %}
-            {% include "forms/data.html.twig" %}
+            {% include "forms/form.html.twig" %}
             {% endif  %}
           </div>
         </article>

@@ -488,7 +488,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   border-radius: 3px;
 }
 
-html input[type="button"], input[type="reset"], input[type="submit"] {
+html input[type="button"], input[type="reset"], input[type="submit"], button[type="submit"] {
   background-color: #e8554e;
   color: #FFFFFF;
   padding: 0.35em 1.5em;
@@ -505,7 +505,7 @@ html input[type="button"], input[type="reset"], input[type="submit"] {
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
-html input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover {
+html input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover, button[type="submit"]:hover {
   background-color: #555555;
 }
 

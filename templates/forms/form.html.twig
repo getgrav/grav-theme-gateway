@@ -2,7 +2,7 @@
 
 <form name="{{ form.name }}"
       action="{{ uri.rootUrl ~ (form.action|default(page.route)) }}"
-      method="{{ form.method|upper|default('POST') }}">
+      method="{{ form.method|upper|default('POST') }}" class="contact-form commentsblock">
 {% for field in form.fields %}
     {% set value = form.value(field.name) %}
     <div>
@@ -12,10 +12,10 @@
 
 	<div class="buttons">
 	{% for button in form.buttons %}
-	    <button class="button" type="{{ button.type|default('submit') }}">{{ button.value|default('Submit') }}</button>
+	    <button class="pushbutton-wide" type="{{ button.type|default('submit') }}">{{ button.value|default('Submit') }}</button>
 	{% endfor %}
 	</div>
-	
+
 	{{ nonce_field('form', 'form-nonce') }}
 
 </form>
