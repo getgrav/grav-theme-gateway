@@ -2,11 +2,9 @@
 
 {% if taxlist %}
 
-<ul class="archives">
+<div class="tagcloud">
     {% for tax,value in taxlist[taxonomy] %}
-    <li>
         <a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tax|e('url') }}">{{ tax }} </a>
-    </li>
     {% endfor %}
-</ul>
+</div>
 {% endif %}
