@@ -2,6 +2,10 @@
 
 {% set featured = page.collection({'items':{'@taxonomy.featured': true},'order': {'by': 'date', 'dir': 'desc'}}) %}
 
+{% block header %}
+  {% include 'partials/header.html.twig' %}
+{% endblock %}
+
 {% block content %}
 <div class="home_posts_titles">
   <div class="row">
