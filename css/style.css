@@ -816,7 +816,6 @@ article table .even {
   /* stops bg color from leaking outside the border: */
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  margin-left: 5rem;
   padding: 2.5rem;
 }
 .comment .comment-meta-header cite {
