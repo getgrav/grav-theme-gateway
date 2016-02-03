@@ -4,6 +4,12 @@
     {% include 'partials/simplesearch_searchbox.html.twig' %}
 </aside>
 {% endif %}
+{% if config.plugins.taxonomylist.enabled %}
+<aside class="widget widget_categories">
+    <h1 class="widget-title">Categories</h1>
+    {% include 'partials/categorylist.html.twig' with {'taxonomy':'category'} %}
+</aside>
+{% endif %}
 {% if config.plugins.random.enabled %}
 <aside class="widget widget_categories">
 	<h1 class="widget-title">Random Article</h1>
