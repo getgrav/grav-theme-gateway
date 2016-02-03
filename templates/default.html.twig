@@ -1,5 +1,27 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block content %}
-	<p>{{ page.content }}</p>
+<div class="row">
+  <div id="primary" class="content-area">
+    <div class="large-8 columns">
+      <main id="main" class="site-main" role="main">
+        <article class="page type-page status-publish hentry">
+          <header class="entry-header">
+            <h2 class="entry-title">
+              {{ page.header.title }}
+            </h2>
+          </header>
+          <div class="entry-content">
+            {{ page.content }}
+          </div>
+        </article>
+      </main>
+    </div>
+    <div class="large-3 large-offset-1 columns">
+      <div id="secondary" class="widget-area">
+        {% include 'partials/sidebar.html.twig' %}
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
