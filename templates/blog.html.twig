@@ -23,7 +23,7 @@
 </div>
 <div class="row">
   <div id="primary" class="content-area">
-    <div class="large-8 columns">
+    <div class="large-{% if not page.header.fullwidth %}8{% else %}12{% endif %} columns">
       <main id="main" class="site-main" role="main">
         {% for child in collection %}
         <div class="row">
@@ -36,11 +36,13 @@
         {% endif %}
       </main>
     </div>
+    {% if not page.header.fullwidth %}
     <div class="large-3 large-offset-1 columns">
       <div id="secondary" class="widget-area">
         {% include 'partials/sidebar.html.twig' %}
       </div>
     </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
