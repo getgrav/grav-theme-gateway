@@ -4,15 +4,12 @@
 <div class="jp-relatedposts-post jp-relatedposts-post{{ loop.index }} jp-relatedposts-post-thumbs" data-post-id="{{ loop.index }}" data-post-format="false">
   <a class="jp-relatedposts-post-a" href="{{ related.url }}" title="{{ related.title }}" rel="nofollow">
     {% if related.media.images|first %}
-    {{ related.media.images|first.cropZoom(218,125).html('', '', 'jp-relatedposts-post-img') }}
+    {{ related.media.images|first.cropZoom(241,138).html('', '', 'jp-relatedposts-post-img') }}
     {% endif %}
   </a>
   <h4 class="jp-relatedposts-post-title">
     <a class="jp-relatedposts-post-a" href="{{ related.url }}" title="{{ related.title }}" rel="nofollow">
       {{ related.title }}
-      {% if config.plugins.relatedpages.show_score %}
-      <span class="score">({{ score }})</span>
-      {% endif %}
     </a>
   </h4>
 
