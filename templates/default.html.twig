@@ -12,7 +12,30 @@
             </h2>
           </header>
           <div class="entry-content">
+            {% if page.header.toggles %}
+              {% for toggle in page.header.toggles %}
+                {% if toggle.position == 'top' %}
+                  <div class="rescue-toggle  rescue-all">
+                    <h3 class="rescue-toggle-trigger">{{ toggle.title }}</h3>
+                    <div class="rescue-toggle-container">{{ toggle.description }}</div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            <hr class="rescue-spacing " style="height: 30px">
+            {% endif %}
             {{ page.content }}
+            <div class="entry-content">
+              {% if page.header.toggles %}
+                {% for toggle in page.header.toggles %}
+                  {% if toggle.position == 'bottom' %}
+                    <div class="rescue-toggle  rescue-all">
+                      <h3 class="rescue-toggle-trigger">{{ toggle.title }}</h3>
+                      <div class="rescue-toggle-container">{{ toggle.description }}</div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              <hr class="rescue-spacing " style="height: 30px">
+              {% endif %}
           </div>
         </article>
       </main>

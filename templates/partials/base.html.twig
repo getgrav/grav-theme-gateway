@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" href="{{ theme_url }}/img/favicon.png" />
 
     {% block stylesheets %}
+        {% do assets.addCss('theme://css/animate.min.css') %}
         {% do assets.addCss('theme://fonts/css/font-awesome.css',100) %}
         {% do assets.addCss('theme://css/rescue_shortcodes_styles.css') %}
         {% do assets.addCss('theme://css/app.css') %}
@@ -26,6 +27,9 @@
         {% do assets.addJs('theme://js/modernizr.custom.js',100) %}
         {% do assets.addJs('theme://js/skip-link-focus-fix.js') %}
         {% do assets.addJs('theme://js/scripts.js') %}
+        {% do assets.addJs('theme://js/rescue_toggle.js') %}
+        {% do assets.addJs('theme://js/rescue_progressbar.js') %}
+        {% do assets.addJs('theme://js/waypoints.min.js') %}
     {% endblock %}
     {{ assets.js() }}
 
