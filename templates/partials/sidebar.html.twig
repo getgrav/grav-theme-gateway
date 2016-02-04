@@ -20,6 +20,16 @@
 	<h1 class="widget-title">Some Text Widget</h1>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
 </aside>
+<aside class="widget widget_recent_entries">
+	<h1 class="widget-title">Recent Posts</h1>
+  <ul>
+{% for post in page.find('/blog').children.order('date', 'desc').slice(0, 5) %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+{% endfor %}
+</ul>
+</aside>
 {% if config.plugins.taxonomylist.enabled %}
 <aside class="widget widget_tag_cloud">
     <h1 class="widget-title">Popular Tags</h1>
@@ -27,9 +37,11 @@
 </aside>
 {% endif %}
 {% if config.plugins.feed.enabled %}
-<aside class="widget widget_syndicate">
+<aside class="widget widget_meta">
     <h1 class="widget-title">Syndicate</h1>
-    <a class="button" href="{{ feed_url }}.atom"><i class="fa fa-rss-square"></i> Atom 1.0</a>
-    <a class="button" href="{{ feed_url }}.rss"><i class="fa fa-rss-square"></i> RSS</a>
+    <ul>
+      <li><a href="{{ feed_url }}.atom">Atom 1.0</a></li>
+      <li><a href="{{ feed_url }}.rss">RSS</a></li>
+    </ul>
 </aside>
 {% endif %}
