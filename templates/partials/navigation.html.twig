@@ -1,6 +1,6 @@
 {% macro loop(page) %}
     {% for p in page.children %}
-        {% if p.visible %}
+        {% if p.visible and p.children %}
             {% set current_page = (p.active or p.activeChild) ? 'active' : '' %}
             <li id="menu-item-{{ loop.index }}" class="menu-item menu-item-has-children has-dropdown menu-item-{{ loop.index }} not-click {{ current_page }}">
                 <a href="{{ p.url }}">
@@ -26,7 +26,7 @@
          </ul>
          <section class="top-bar-section">
             <ul id="menu-header" class="right">
-              {% if config.themes.gateway.dropdown.enabled %}
+              {% if theme_config.dropdown.enabled %}
                   {{ _self.loop(pages) }}
               {% else %}
                   {% for page in pages.children %}
