@@ -12,6 +12,23 @@
             </h2>
           </header>
           <div class="entry-content">
+
+            {% if page.header.progressbar %}
+            <hr class="rescue-spacing " style="height: 10px">
+            <div class="rescue-column rescue-all">
+            {% for bar in page.header.progressbar %}
+                {% if bar.position == 'top' %}
+               <div class="rescue-progressbar rescue-clearfix  rescue-all" data-percent="{{ bar.percent }}%">
+                  <div class="rescue-progressbar-title" style="background: {{ bar.background }};"><span>{{ bar.title }}</span></div>
+                  <div class="rescue-progressbar-bar" style="background: {{ bar.background }};"></div>
+                  <div class="rescue-progress-bar-percent">{{ bar.percent }}%</div>
+               </div>
+               {% endif %}
+            {% endfor %}
+            </div>
+            <hr class="rescue-spacing " style="height: 10px">
+            {% endif %}
+
             {% if page.header.toggles %}
               {% for toggle in page.header.toggles %}
                 {% if toggle.position == 'top' %}
@@ -25,6 +42,21 @@
             {% endif %}
             {{ page.content }}
             <div class="entry-content">
+              {% if page.header.progressbar %}
+              <hr class="rescue-spacing " style="height: 10px">
+              <div class="rescue-column rescue-all">
+              {% for bar in page.header.progressbar %}
+                  {% if bar.position == 'bottom' %}
+                 <div class="rescue-progressbar rescue-clearfix  rescue-all" data-percent="{{ bar.percent }}%">
+                    <div class="rescue-progressbar-title" style="background: {{ bar.background }};"><span>{{ bar.title }}</span></div>
+                    <div class="rescue-progressbar-bar" style="background: {{ bar.background }};"></div>
+                    <div class="rescue-progress-bar-percent">{{ bar.percent }}%</div>
+                 </div>
+                 {% endif %}
+              {% endfor %}
+              </div>
+              <hr class="rescue-spacing " style="height: 10px">
+              {% endif %}
               {% if page.header.toggles %}
                 {% for toggle in page.header.toggles %}
                   {% if toggle.position == 'bottom' %}
