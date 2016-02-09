@@ -30,6 +30,7 @@
         {% do assets.addJs('theme://js/rescue_toggle.js') %}
         {% do assets.addJs('theme://js/rescue_progressbar.js') %}
         {% do assets.addJs('theme://js/waypoints.min.js') %}
+        {% do assets.addJs('theme://js/infinity.js') %}
     {% endblock %}
     {{ assets.js() }}
 
@@ -46,15 +47,34 @@
           {% include 'partials/navigation.html.twig' %}
         {% endblock %}
 
-        {% block body %}
         <div id="content" class="site-content">
           {% block content %}{% endblock %}
         </div>
-        {% endblock %}
 
         {% block footer %}
           {% include 'partials/footer.html.twig' %}
         {% endblock %}
     </div>
+
+    <script type="text/javascript">
+		//<![CDATA[
+		var infiniteScroll = {"settings":{"id":"main","type":"scroll","wrapper":true,"wrapper_class":"infinite-wrap","footer":"page","click_handle":"1","text":"Older posts"}};
+		//]]>
+		</script>
+    <div id="infinite-footer">
+      <div class="container">
+        <div class="blog-info">
+          <a id="infinity-blog-title" href="{{ base_url_absolute }}" rel="home" title="{{ site.title }}">
+            {{ site.title }}
+          </a>
+        </div>
+        {% if site.copyright %}
+        <div class="blog-credits">
+              {{ site.copyright }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
 </body>
 </html>
