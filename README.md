@@ -4,6 +4,22 @@
 
 Gateway by [RescueThemes](https://rescuethemes.com/) incorporates elegant style with user friendly customizer options making it perfectly suited for a variety of Grav users. With rock solid development and flexible integration, the Gateway theme is sure to be a favorite for first time Grav users and experienced developers alike.
 
+# Features
+
+* Navigation menu included
+* Clean Layout
+* Blog Layout
+* Minimalistic
+* Social Sharing
+* Browser Compatibility
+* SimpleSearch support
+* Feeds
+* Feaured Posts
+* RelatedPosts plugin support
+* Archives plugin support
+* JSComments plugin support
+* Comments and Forms plugin support
+
 # Installation
 
 Installing the Gateway theme can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the theme with a simple terminal command, while the manual method enables you to do so via a zip file.
@@ -51,26 +67,13 @@ Manually updating Gateway is pretty simple. Here is what you will need to do to 
 
 > Note: Any changes you have made to any of the files listed under this directory will also be removed and replaced by the new set. Any files located elsewhere (for example a YAML settings file placed in `user/config/themes`) will remain intact.
 
-## Features
-
-* Lightweight and minimal for optimal performance
-* Fully responsive with off-page mobile navigation
-* SCSS based CSS source files for easy customization
-* Built-in support for on-page navigation
-* Multiple page template types
-* Fontawesome icon support
-
 ### Supported Page Templates
 
 * Default view template
 * Blog view template
 * Error view template
 * Blog item view template
-* Modular view templates:
-  * Features Modular view template
-  * Showcase Modular view template
-  * Text Modular view template
-* SnipCart view template
+* Modular view templates
 
 ### Menu Features
 
@@ -85,18 +88,12 @@ dropdown:
 
 This will ensure that sub-pages show up as sub-menus in the navigation.
 
-##### Menu Text & Icons
+##### Menu Text
 
 Each page shows up in the menu using the title by default, however you can set what displays in the menu directly by setting an explicit `menu:` option in the page header:
 
 ```
 menu: My Menu
-```
-
-You can also provide an icon to show up in front of the menu item by providing an `icon:` option.  You need to use name of the FontAwesome icon without the `fa-` prefix.  Check out the full [list of current FontAwesome 4.2 icons](http://fortawesome.github.io/Font-Awesome/icons/):
-
-```
-icon: bar-chart-o
 ```
 
 #### Custom Menu Items
@@ -111,17 +108,8 @@ menu:
       url: http://twitter.com/getgrav
 ```
 
-The `url:` option is required, but you can provide **either** or **both** `text:` and/or `icon:`
+The `url:` option is required.
 
-### Blog Features
-
-##### Daring Fireball Link Pages
-
-Gateway supports the ability for a page to have a `link:` header option.  This will then in turn create a **link page** where the title of the page will actually be linked to the link provided and a prefexid double angle `>>` will link to the page itself.  Simply provide the link in the page header:
-
-```
-link: http://getgrav.org/blog
-```
 
 # Setup
 
