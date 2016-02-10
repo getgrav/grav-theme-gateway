@@ -1,0 +1,9 @@
+{% set taxlist = taxonomylist.get() %}
+
+{% if taxlist %}
+<ul>
+    {% for tax,value in taxlist[taxonomy] %}
+        <li class="cat-item cat-item-{{ loop.index }}"><a href="{{ base_url }}/category{{ config.system.param_sep }}{{ tax|e('url') }}">{{ tax|capitalize }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}

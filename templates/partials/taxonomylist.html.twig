@@ -1,0 +1,9 @@
+{% set taxlist = taxonomylist.get() %}
+
+{% if taxlist %}
+<div class="tagcloud">
+    {% for tax,value in taxlist[taxonomy] %}
+        <a href="{{ base_url }}/{{ taxonomy }}{{ config.system.param_sep }}{{ tax|e('url') }}">{{ tax|capitalize }} </a>
+    {% endfor %}
+</div>
+{% endif %}

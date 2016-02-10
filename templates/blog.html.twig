@@ -1,0 +1,49 @@
+{% embed 'partials/base.html.twig' %}
+
+{% set collection = page.collection() %}
+{% set base_url = page.url %}
+{% set feed_url = base_url %}
+
+{% if base_url == '/' %}
+{% set base_url = '' %}
+{% endif %}
+
+{% if base_url == base_url_relative %}
+{% set feed_url = base_url~'/'~page.slug %}
+{% endif  %}
+
+{% block content %}
+<div class="blog_page_titles">
+  <div class="row blog_page_titles">
+    <div class="large-12 columns">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div id="primary" class="content-area">
+    <div class="large-{% if not page.header.fullwidth %}8{% else %}12{% endif %} columns">
+      <main id="main" class="site-main" role="main">
+        {% for child in collection %}
+        <div class="row">
+          {% include 'partials/blog_item.html.twig' with {'page':child, 'truncate':true} %}
+        </div>
+        {% endfor %}
+
+        {% if config.plugins.pagination.enabled and collection.params.pagination %}
+        {% include 'partials/pagination.html.twig' with {'pagination':collection.params.pagination} %}
+        {% endif %}
+      </main>
+    </div>
+    {% if not page.header.fullwidth %}
+    <div class="large-3 large-offset-1 columns">
+      <div id="secondary" class="widget-area">
+        {% include 'partials/sidebar.html.twig' %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+
+{% endembed %}

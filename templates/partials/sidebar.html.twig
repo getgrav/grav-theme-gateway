@@ -1,0 +1,47 @@
+{% if config.plugins.simplesearch.enabled %}
+<aside class="widget widget_search">
+    <h1 class="widget-title">SimpleSearch</h1>
+    {% include 'partials/simplesearch_searchbox.html.twig' %}
+</aside>
+{% endif %}
+{% if config.plugins.taxonomylist.enabled %}
+<aside class="widget widget_categories">
+    <h1 class="widget-title">Categories</h1>
+    {% include 'partials/categorylist.html.twig' with {'taxonomy':'category'} %}
+</aside>
+{% endif %}
+{% if config.plugins.random.enabled %}
+<aside class="widget widget_categories">
+	<h1 class="widget-title">Random Article</h1>
+	<a class="button" href="{{ base_url_relative }}/random"><i class="fa fa-retweet"></i> I'm Feeling Lucky!</a>
+</aside>
+{% endif %}
+<aside class="widget widget_categories">
+	<h1 class="widget-title">Some Text Widget</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+</aside>
+<aside class="widget widget_recent_entries">
+	<h1 class="widget-title">Recent Posts</h1>
+  <ul>
+{% for post in page.find('/blog').children.order('date', 'desc').slice(0, 5) %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+{% endfor %}
+</ul>
+</aside>
+{% if config.plugins.taxonomylist.enabled %}
+<aside class="widget widget_tag_cloud">
+    <h1 class="widget-title">Popular Tags</h1>
+    {% include 'partials/taxonomylist.html.twig' with {'taxonomy':'tag'} %}
+</aside>
+{% endif %}
+{% if config.plugins.feed.enabled %}
+<aside class="widget widget_meta">
+    <h1 class="widget-title">Syndicate</h1>
+    <ul>
+      <li><a href="{{ feed_url }}.atom">Atom 1.0</a></li>
+      <li><a href="{{ feed_url }}.rss">RSS</a></li>
+    </ul>
+</aside>
+{% endif %}

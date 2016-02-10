@@ -1,0 +1,55 @@
+
+<style type="text/css" id="rescue_custom_css">
+.home-header-bg {
+  background:url( '{{ theme_url }}/img/{{ site.header.background }}' ) #ffffff no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+/* for background-size:cover replacement on iOS devices */
+@media only screen and (max-width: 40em) {
+  .home-header-bg {
+    background-attachment: scroll;
+  }
+}
+@media only screen and (orientation: portrait) and (device-width: 320px), (device-width: 768px) {
+  .home-header-bg {
+    -webkit-background-size: auto 150%;
+    background-attachment: scroll;
+  }
+}
+@media only screen and (orientation: landscape) and (device-width: 320px), (device-width: 768px) {
+  .home-header-bg {
+    -webkit-background-size: 150% auto;
+    background-attachment: scroll;
+  }
+}
+
+.bg-image-header {
+  background:url( '{{ theme_url }}/img/{{ site.header.background }}' ) center bottom #ffffff;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+}
+
+.bg-center-center {
+  background-position: center center;
+}
+
+.site-branding {
+  margin: 0 auto;
+  display: table;
+  padding-top: 2em;
+}
+</style>
+
+<div class="bg-image bg-image-header bg-center-center">
+  <div class="site-branding">
+    <a href="{{ base_url_absolute }}">
+      <img class="logo" src="{{ theme_url }}/img/{{ site.logo }}" alt="{{ site.logo }}">
+    </a>
+  </div>
+</div>

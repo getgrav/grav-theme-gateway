@@ -1,0 +1,80 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title }} | {% endif %}{{ site.title }}</title>
+    {% include 'partials/metadata.html.twig' %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="{{ theme_url }}/img/favicon.png" />
+
+    {% block stylesheets %}
+        {% do assets.addCss('theme://css/animate.min.css') %}
+        {% do assets.addCss('theme://fonts/css/font-awesome.css',100) %}
+        {% do assets.addCss('theme://css/rescue_shortcodes_styles.css') %}
+        {% do assets.addCss('theme://css/app.css') %}
+        {% do assets.addCss('theme://css/style.css') %}
+        {% do assets.addCss('theme://genericons/genericons.css') %}
+        {% do assets.addCss('theme://css/jetpack.css') %}
+    {% endblock %}
+
+    {{ assets.css() }}
+    <link rel='stylesheet' id='gateway-fonts-css'  href='//fonts.googleapis.com/css?family=Quattrocento%3A400%2C700%7CFanwood+Text%3A400%2C400italic&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+    {% block javascripts %}
+        {% do assets.add('jquery', 101) %}
+        {% do assets.addJs('theme://js/foundation.js') %}
+        {% do assets.addJs('theme://js/modernizr.custom.js',100) %}
+        {% do assets.addJs('theme://js/skip-link-focus-fix.js') %}
+        {% do assets.addJs('theme://js/scripts.js') %}
+        {% do assets.addJs('theme://js/rescue_toggle.js') %}
+        {% do assets.addJs('theme://js/rescue_progressbar.js') %}
+        {% do assets.addJs('theme://js/waypoints.min.js') %}
+        {% do assets.addJs('theme://js/infinity.js') %}
+    {% endblock %}
+    {{ assets.js() }}
+
+{% endblock head%}
+</head>
+<body id="top" class="{{ page.header.body_classes }}">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+    <div id="page">
+        {% block header %}
+          {% include 'partials/header_alt.html.twig' %}
+        {% endblock %}
+
+        {% block navigation %}
+          {% include 'partials/navigation.html.twig' %}
+        {% endblock %}
+
+        <div id="content" class="site-content">
+          {% block content %}{% endblock %}
+        </div>
+
+        {% block footer %}
+          {% include 'partials/footer.html.twig' %}
+        {% endblock %}
+    </div>
+
+    <script type="text/javascript">
+		//<![CDATA[
+		var infiniteScroll = {"settings":{"id":"main","type":"scroll","wrapper":true,"wrapper_class":"infinite-wrap","footer":"page","click_handle":"1","text":"Older posts"}};
+		//]]>
+		</script>
+    <div id="infinite-footer">
+      <div class="container">
+        <div class="blog-info">
+          <a id="infinity-blog-title" href="{{ base_url_absolute }}" rel="home" title="{{ site.title }}">
+            {{ site.title }}
+          </a>
+        </div>
+        {% if site.copyright %}
+        <div class="blog-credits">
+              {{ site.copyright }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+</body>
+</html>

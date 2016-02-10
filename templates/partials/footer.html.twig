@@ -1,0 +1,58 @@
+<div class="footer-wrap">
+   <div class="row">
+      <div class="large-12 columns">
+         <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="row">
+               <div class="large-4 columns">
+                  <aside id="text-5" class="widget widget_text">
+                    {% if site.footer.widget.title %}
+                     <h1 class="widget-title">{{ site.footer.widget.title }}</h1>
+                    {% endif %}
+                     <div class="textwidget">
+                       {% if site.footer.widget.description %}
+                        <p>{{ site.footer.widget.description }}</p>
+                      {% endif %}
+                        {% if site.footer.widget.link.url or site.footer.widget.link.text %}
+                        <p><a class="more-link" href="{{ site.footer.widget.link.url }}">{{ site.footer.widget.link.text }}</a></p>
+                        {% endif %}
+                     </div>
+                  </aside>
+               </div>
+               {% if config.plugins.archives.enabled %}
+               <div class="large-4 columns">
+                  <aside id="recent-posts-4" class="widget widget_recent_entries">
+                      <h1 class="widget-title">Archives</h1>
+                     	{% include 'partials/archives.html.twig' %}
+                  </aside>
+               </div>
+               {% endif %}
+               <div class="large-4 columns">
+                 {% if site.social %}
+                  <aside id="text-6" class="widget widget_text">
+                     <h1 class="widget-title">Keep In Touch</h1>
+                     <div class="textwidget">
+                       {% for item in site.social %}
+                         <a href="{{ item.url }}"><i class="fa fa-{{ item.icon }}"></i></a>
+                       {% endfor %}
+                     </div>
+                  </aside>
+                  {% endif %}
+                  {% if config.plugins.simplesearch.enabled %}
+                  <aside id="search-4" class="widget widget_search search-form">
+                     <h1 class="widget-title">Find What You Need</h1>
+                         {% include 'partials/simplesearch_searchbox.html.twig' %}
+                  </aside>
+                   {% endif %}
+               </div>
+            </div>
+            {% if site.copyright %}
+            <div class="site-info">
+               <p>
+                  {{ site.copyright }}
+               </p>
+            </div>
+            {% endif %}
+         </footer>
+      </div>
+   </div>
+</div>

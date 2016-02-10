@@ -1,0 +1,208 @@
+<article {% if loop.index %}id="post-{{ loop.index }}"{% endif %} class="clearfix {% if loop.index %}post-{{ loop.index }}{% endif %} post type-post format-standard has-post-thumbnail {% if truncate %}{% if page.header.post_class %}{{ page.header.post_class }}{% endif %}{% endif %} hentry category-featured">
+  <div class="featured-image">
+    {{ page.media.images|first.cropZoom(356,356).html }}
+  </div>
+  <header class="entry-header">
+    <h3 class="entry-title">
+      {% if page.header.link %}
+      <a href="{{ page.header.link }}">{{ page.title }}</a>
+      {% else %}
+      <a href="{{ page.url }}">{{ page.title }}</a>
+      {% endif %}
+    </h3>
+    {% if truncate %}
+    <div class="entry-date">
+      {{ 'MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}
+    </div>
+    {% endif %}
+
+    {% if not truncate %}
+    <div class="entry-meta">
+      <span class="posted-on">Posted on
+        <a href="{{ page.url }}" rel="bookmark">
+          <time class="entry-date published" datetime="{{ 'MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}">
+            {{ 'MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}
+          </time>
+        </a>
+      </span>
+      <span class="byline"> by
+        <span class="author vcard">
+          {{ page.header.author }}
+        </span>
+      </span>
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="entry-content">
+    {% if page.header.continue_link is sameas(false) %}
+    <p>{{ page.content }}</p>
+    {% if not truncate %}
+    {% set show_prev_next = true %}
+    {% endif %}
+    {% elseif truncate and readmore is sameas(false) %}
+    {{ page.content|truncate(200) }}
+    {% elseif truncate and page.summary != page.content %}
+    <p>
+      {{ page.summary|striptags }}
+      <a href="{{ page.url }}">more...</a>
+    </p>
+    {% elseif truncate %}
+    <p>
+      {{ page.content|truncate(550)|striptags }}
+      <a href="{{ page.url }}">more...</a>
+    </p>
+    {% else %}
+
+    {% if page.header.progressbar %}
+    <hr class="rescue-spacing " style="height: 10px">
+    <div class="rescue-column rescue-all">
+    {% for bar in page.header.progressbar %}
+        {% if bar.position == 'top' %}
+       <div class="rescue-progressbar rescue-clearfix  rescue-all" data-percent="{{ bar.percent }}%">
+          <div class="rescue-progressbar-title" style="background: {{ bar.background }};"><span>{{ bar.title }}</span></div>
+          <div class="rescue-progressbar-bar" style="background: {{ bar.background }};"></div>
+          <div class="rescue-progress-bar-percent">{{ bar.percent }}%</div>
+       </div>
+       {% endif %}
+    {% endfor %}
+    </div>
+    <hr class="rescue-spacing " style="height: 10px">
+    {% endif %}
+
+    {% if page.header.toggles %}
+    <hr class="rescue-spacing " style="height: 30px">
+      {% for toggle in page.header.toggles %}
+        {% if toggle.position == 'top' %}
+          <div class="rescue-toggle  rescue-all">
+            <h3 class="rescue-toggle-trigger">{{ toggle.title }}</h3>
+            <div class="rescue-toggle-container">{{ toggle.description }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    <hr class="rescue-spacing " style="height: 30px">
+    {% endif %}
+    <p>{{ page.content }}</p>
+    <div class="entry-content">
+
+      {% if page.header.progressbar %}
+      <hr class="rescue-spacing " style="height: 10px">
+      <div class="rescue-column rescue-all">
+      {% for bar in page.header.progressbar %}
+          {% if bar.position == 'bottom' %}
+         <div class="rescue-progressbar rescue-clearfix  rescue-all" data-percent="{{ bar.percent }}%">
+            <div class="rescue-progressbar-title" style="background: {{ bar.background }};"><span>{{ bar.title }}</span></div>
+            <div class="rescue-progressbar-bar" style="background: {{ bar.background }};"></div>
+            <div class="rescue-progress-bar-percent">{{ bar.percent }}%</div>
+         </div>
+         {% endif %}
+      {% endfor %}
+      </div>
+      <hr class="rescue-spacing " style="height: 10px">
+      {% endif %}
+
+      {% if page.header.toggles %}
+        {% for toggle in page.header.toggles %}
+          {% if toggle.position == 'bottom' %}
+            <div class="rescue-toggle  rescue-all">
+              <h3 class="rescue-toggle-trigger">{{ toggle.title }}</h3>
+              <div class="rescue-toggle-container">{{ toggle.description }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      <hr class="rescue-spacing " style="height: 30px">
+      {% endif %}
+    {% set show_prev_next = true %}
+    {% endif %}
+
+
+    {% if not truncate %}
+      <div class="sharedaddy sd-sharing-enabled">
+        <div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
+          <h3 class="sd-title">{{ 'SHARE'|t }}</h3>
+          <div class="sd-content">
+            <ul>
+              <li class="share-facebook">
+                <a rel="nofollow" data-shared="sharing-facebook-368" class="share-facebook sd-button share-icon" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url(true) }}" target="_blank" title="{{ page.header.title }}"><span>Facebook</span></a>
+              </li>
+              <li class="share-twitter">
+                <a rel="nofollow" data-shared="sharing-twitter-368" class="share-twitter sd-button share-icon" href="http://twitter.com/home?status={{ page.title|replace({' ': "%20"}) }}-{{ page.url(true) }}" target="_blank" title="{{ page.header.title }}"><span>Twitter</span></a>
+              </li>
+              <li class="share-google-plus-1">
+                <a rel="nofollow" data-shared="sharing-google-368" class="share-google-plus-1 sd-button share-icon" href="https://plus.google.com/share?url={{ page.url(true) }}" target="_blank" title="{{ page.header.title }}"><span>Google</span></a>
+              </li>
+              <li class="share-pinterest">
+                <a rel="nofollow" data-shared="sharing-pinterest-368" class="share-pinterest sd-button share-icon" href="https://www.pinterest.com/pin/create/button/?url={{ page.url(true) }}" target="_blank" title="{{ page.header.title }}"><span>Pinterest</span></a>
+              </li>
+              <li class="share-end"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-facebook').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+      windowOpen=window.open(jQuery(this).attr('href'),'wpcomfacebook','menubar=1,resizable=1,width=600,height=400');return false;});});</script>
+      <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-twitter').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+      windowOpen=window.open(jQuery(this).attr('href'),'wpcomtwitter','menubar=1,resizable=1,width=600,height=350');return false;});});</script>
+      <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-google-plus-1').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+      windowOpen=window.open(jQuery(this).attr('href'),'wpcomgoogle-plus-1','menubar=1,resizable=1,width=480,height=550');return false;});});</script>
+      {% endif %}
+
+      {% if not truncate %}
+    <div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+      <h3 class="jp-relatedposts-headline"><em>{{ 'RELATED_POSTS'|t }}</em></h3>
+      <div class="jp-relatedposts-items jp-relatedposts-items-visual">
+        {% include 'partials/relatedpages.html.twig' %}
+      </div>
+    </div>
+    <hr/>
+    {% endif %}
+  </div>
+
+  <footer class="entry-footer clearfix">
+    <span class="left">
+      <a href="{{ page.url }}#comments"><i class="fa fa-comment"></i></a>
+      <a href="{{ page.url }}"><i class="fa fa-link"></i></a>
+    </span>
+    <span class="right">
+      {% if not truncate %}
+        {% if page.taxonomy.tag %}
+        <span class="tags-links">
+          {% for tag in page.taxonomy.tag %}
+            <a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag|capitalize }}{% if not loop.last %},{% endif %}</a>
+          {% endfor %}
+        </span>
+        {% endif %}
+      {% endif %}
+    </span>
+  </footer>
+</article>
+
+{% if show_prev_next %}
+<nav class="navigation post-navigation clearfix" role="navigation">
+  <h1 class="screen-reader-text">Post navigation</h1>
+  <div class="nav-links clearfix">
+    <div class="nav-previous"><a href="{{ page.prevSibling.url }}" rel="prev"><span class="meta-nav">←</span>&nbsp;{{ page.prevSibling.header.title }}</a></div>
+    <div class="nav-next"><a href="{{ page.nextSibling.url }}" rel="next">{{ page.nextSibling.header.title }}&nbsp;<span class="meta-nav">→</span></a></div>
+  </div>
+</nav>
+{% endif %}
+
+{% if not truncate %}
+  {% if config.plugins.jscomments.enabled and config.plugins.jscomments.provider %}
+  <div class="comments-area-wrapper">
+    <div class="comments-area">
+    <h2 class="comments-title">Comments:</h2>
+      {{ jscomments(config.plugins.jscomments.provider) }}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if config.plugins.comments.enabled %}
+  <div class="comments-area-wrapper" id="comments">
+    <div class="comments-area">
+      <h2 class="comments-title">{{ grav.twig.comments|length }} Comments:</h2>
+      {% include 'partials/comments.html.twig' with {'page': page} %}
+    </div>
+  </div>
+  {% endif %}
+{% endif %}

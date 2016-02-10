@@ -1,0 +1,15 @@
+{
+   "project":"grav-theme-gateway",
+   "platforms":{
+      "grav":{
+         "nodes":{
+            "theme":[
+               {
+                  "source":"/",
+                  "destination":"/user/themes/gateway"
+               }
+            ]
+         }
+      }
+   }
+}

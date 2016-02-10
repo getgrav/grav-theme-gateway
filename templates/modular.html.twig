@@ -1,0 +1,36 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set featured = page.collection({'items':{'@taxonomy.featured': true},'order': {'by': 'date', 'dir': 'desc'}}) %}
+
+{% block header %}
+  {% include 'partials/header.html.twig' %}
+{% endblock %}
+
+{% block content %}
+<div class="home_posts_titles">
+  <div class="row">
+    <div class="large-12 columns">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+{% if featured %}
+<div class="featured-posts">
+    {% for row in featured|batch(3) %}
+    <div class="row">
+    {% for child in row %}
+    <div class="large-4 columns">
+      {% include 'partials/blog_item.html.twig' with {'page':child, 'truncate':true, 'readmore': false} %}
+    </div>
+    {% endfor %}
+      </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+  <hr>
+
+{% for module in page.collection() %}
+{{ module.content }}
+{% endfor %}
+{% endblock %}

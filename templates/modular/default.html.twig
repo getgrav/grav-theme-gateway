@@ -1,0 +1,18 @@
+<div class="row {{ page.header.class }}">
+   <div class="large-12 columns">
+     {% if page.header.vimeo %}
+      <div class="rescue-column rescue-one-half rescue-column-first  rescue-all">
+         <div class="embed-vimeo" style="text-align:center;"><iframe src="{{ page.header.vimeo.src }}" width="{{ page.header.vimeo.width }}" height="{{ page.header.vimeo.height }}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></div>
+      </div>
+      {% endif %}
+      <div class="rescue-column rescue-one-half rescue-column-last  rescue-all">
+         {{ page.content }}
+         <p>
+           {% for button in page.header.buttons %}
+           <a href="{{ button.url }}" class="{{ button.class }}">{{ button.text }}</a>
+           {% endfor %}
+         </p>
+      </div>
+   </div>
+   <!-- .large-12 -->
+</div>
