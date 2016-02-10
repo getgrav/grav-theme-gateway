@@ -1,6 +1,6 @@
 name: Gateway
 version: 1.0.0
-description: "Gateway incorporates elegant style with user friendly customizer options making it perfectly suited for a variety of Grav users."
+description: "Gateway incorporates elegant style with user friendly options making it perfectly suited for a variety of Grav users."
 icon: empire
 author:
   name: Team Grav
@@ -10,26 +10,4 @@ homepage: https://github.com/getgrav/grav-theme-gateway
 demo: http://demo.getgrav.org/blog-skeleton
 keywords: gateway, theme, core, modern, fast, responsive, html5, css3, blog
 bugs: https://github.com/getgrav/grav-theme-gateway/issues
-license: MIT
-
-form:
-  validation: loose
-  fields:
-    default_lang:
-      type: text
-      size: x-small
-      label: Default lang
-      default: 'en'
-      validate:
-        type: text
-
-    dropdown.enabled:
-        type: toggle
-        label: Dropdown in navbar
-        highlight: 1
-        default: 1
-        options:
-          1: Enabled
-          0: Disabled
-        validate:
-          type: bool
+license: GPLv2
