@@ -1,4 +1,4 @@
-<article {% if loop.index %}id="post-{{ loop.index }}"{% endif %} class="clearfix {% if loop.index %}post-{{ loop.index }}{% endif %} post type-post format-standard has-post-thumbnail {% if page.header.post_class %}{{ page.header.post_class }}{% endif %} hentry category-featured">
+<article {% if loop.index %}id="post-{{ loop.index }}"{% endif %} class="clearfix {% if loop.index %}post-{{ loop.index }}{% endif %} post type-post format-standard has-post-thumbnail {% if truncate %}{% if page.header.post_class %}{{ page.header.post_class }}{% endif %}{% endif %} hentry category-featured">
   <div class="featured-image">
     {{ page.media.images|first.cropZoom(356,356).html }}
   </div>
