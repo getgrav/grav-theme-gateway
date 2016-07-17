@@ -38,7 +38,7 @@
 
   <div class="buttons">
     {% for button in grav.config.plugins.comments.form.buttons %}
-    <button class="btn" type="{{ button.type|default('submit') }}">{{ button.value|default('Submit') }}</button>
+    <button class="btn" type="{{ button.type|default('submit') }}">{{ button.value|t|default('Submit') }}</button>
     {% endfor %}
   </div>
 
