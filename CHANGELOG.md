@@ -3,6 +3,7 @@
 
 1. [](#improved)
     * Added french
+    * Fix Comments submit-button value [#4](https://github.com/getgrav/grav-theme-gateway/pull/4)
 
 # v1.1.0
 ## 07/14/2016
