@@ -41,7 +41,7 @@
     {% set show_prev_next = true %}
     {% endif %}
     {% elseif truncate and readmore is sameas(false) %}
-    {{ page.content|truncate(200) }}
+    {{ page.content|truncate(200, true) }}
     {% elseif truncate and page.summary != page.content %}
     <p>
       {{ page.summary|striptags }}
