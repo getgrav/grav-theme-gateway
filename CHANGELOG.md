@@ -1,5 +1,5 @@
-# v1.x.x
-## xx/xx/2016
+# v1.2.0
+## 09/09/2016
 
 1. [](#improved)
     * Added french
