@@ -1,21 +1,8 @@
-<div class="alert">{{ form.message }}</div>
+{% extends 'forms/default/form.html.twig' %}
+{% block form_classes %}
+  class="{{ form.classes }} contact-form commentsblock"
+{% endblock %}
 
-<form name="{{ form.name }}"
-      action="{{ uri.rootUrl ~ (form.action|default(page.route)) }}"
-      method="{{ form.method|upper|default('POST') }}" class="contact-form commentsblock">
-{% for field in form.fields %}
-    {% set value = form.value(field.name) %}
-    <div>
-        {% include "forms/fields/#{field.type}/#{field.type}.html.twig" %}
-    </div>
-{% endfor %}
-
-	<div class="buttons">
-	{% for button in form.buttons %}
-	    <button class="pushbutton-wide" type="{{ button.type|default('submit') }}">{{ button.value|default('Submit') }}</button>
-	{% endfor %}
-	</div>
-
-	{{ nonce_field('form', 'form-nonce') }}
-
-</form>
+{% block button_classes %}
+  class="{{ button.classes|default('button') }} pushbutton-wide"
+{% endblock %}
