@@ -1,5 +1,5 @@
 # v1.3.0
-## xx/xx/2017
+## 01/24/2017
 
 1. [](#[](#bugfix)
     * Fixed base_url variable overwriting issue causing issue with search in blog / blog posts
