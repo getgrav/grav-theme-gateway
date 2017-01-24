@@ -1,3 +1,10 @@
+# v1.3.0
+## xx/xx/2017
+
+1. [](#[](#bugfix)
+    * Fixed base_url variable overwriting issue causing issue with search in blog / blog posts
+    * Fixed link to demo page in blueprint
+
 # v1.2.0
 ## 09/09/2016
 
