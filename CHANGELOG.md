@@ -1,7 +1,13 @@
+# v1.3.1
+## 02/xx/2017
+
+1. [](#bugfix)
+    * Update to use appropriate page.url for pagination [#9](https://github.com/getgrav/grav-theme-gateway/pull/9)
+
 # v1.3.0
 ## 01/24/2017
 
-1. [](#[](#bugfix)
+1. [](#bugfix)
     * Fixed base_url variable overwriting issue causing issue with search in blog / blog posts
     * Fixed link to demo page in blueprint
 
