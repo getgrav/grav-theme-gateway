@@ -1,5 +1,5 @@
 # v1.3.1
-## 02/xx/2017
+## 02/26/2017
 
 1. [](#bugfix)
     * Update to use appropriate page.url for pagination [#9](https://github.com/getgrav/grav-theme-gateway/pull/9)
