@@ -7,7 +7,7 @@
 {% if config.plugins.taxonomylist.enabled %}
 <aside class="widget widget_categories">
     <h1 class="widget-title">Categories</h1>
-    {% include 'partials/categorylist.html.twig' with {'taxonomy':'category'} %}
+    {% include 'partials/categorylist.html.twig' with {'taxonomy':'category', 'base_url':the_base_url} %}
 </aside>
 {% endif %}
 {% if config.plugins.random.enabled %}
@@ -33,7 +33,7 @@
 {% if config.plugins.taxonomylist.enabled %}
 <aside class="widget widget_tag_cloud">
     <h1 class="widget-title">Popular Tags</h1>
-    {% include 'partials/taxonomylist.html.twig' with {'taxonomy':'tag'} %}
+    {% include 'partials/taxonomylist.html.twig' with {'taxonomy':'tag', 'base_url':the_base_url} %}
 </aside>
 {% endif %}
 {% if config.plugins.feed.enabled %}
