@@ -40,7 +40,7 @@
               {% endfor %}
             <hr class="rescue-spacing " style="height: 30px">
             {% endif %}
-            {{ page.content }}
+            {{ page.content|raw }}
             <div class="entry-content">
               {% if page.header.progressbar %}
               <hr class="rescue-spacing " style="height: 10px">

@@ -31,7 +31,7 @@
         {% do assets.addJs('theme://js/waypoints.min.js') %}
         {% do assets.addJs('theme://js/infinity.js') %}
     {% endblock %}
-    
+
     {% block assets deferred %}
     	{{ assets.css()|raw }}
       {{ assets.js()|raw }}
@@ -73,12 +73,12 @@
         </div>
         {% if site.copyright %}
         <div class="blog-credits">
-              {{ site.copyright }}
+              {{ site.copyright|raw }}
         </div>
         {% endif %}
       </div>
     </div>
 
-{{ assets.js('bottom')|raw }} 
+{{ assets.js('bottom')|raw }}
 </body>
 </html>
