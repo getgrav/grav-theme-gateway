@@ -10,7 +10,7 @@
 <div class="home_posts_titles">
   <div class="row">
     <div class="large-12 columns">
-      {{ page.content }}
+      {{ page.content|raw }}
     </div>
   </div>
 </div>
@@ -31,6 +31,6 @@
   <hr>
 
 {% for module in page.collection() %}
-{{ module.content }}
+{{ module.content|raw }}
 {% endfor %}
 {% endblock %}

@@ -1,6 +1,6 @@
 <article {% if loop.index %}id="post-{{ loop.index }}"{% endif %} class="clearfix {% if loop.index %}post-{{ loop.index }}{% endif %} post type-post format-standard has-post-thumbnail {% if truncate %}{% if page.header.post_class %}{{ page.header.post_class }}{% endif %}{% endif %} hentry category-featured">
   <div class="featured-image">
-    {{ page.media.images|first.cropZoom(356,356).html }}
+    {{ page.media.images|first.cropZoom(356,356).html|raw }}
   </div>
   <header class="entry-header">
     <h3 class="entry-title">
@@ -36,12 +36,12 @@
 
   <div class="entry-content">
     {% if page.header.continue_link is sameas(false) %}
-    <p>{{ page.content }}</p>
+    <p>{{ page.content|raw }}</p>
     {% if not truncate %}
     {% set show_prev_next = true %}
     {% endif %}
     {% elseif truncate and readmore is sameas(false) %}
-    {{ page.content|truncate(200, true) }}
+    {{ page.content|truncate(200, true)|raw }}
     {% elseif truncate and page.summary != page.content %}
     <p>
       {{ page.summary|striptags }}
@@ -82,7 +82,7 @@
       {% endfor %}
     <hr class="rescue-spacing " style="height: 30px">
     {% endif %}
-    <p>{{ page.content }}</p>
+    <p>{{ page.content|raw }}</p>
     <div class="entry-content">
 
       {% if page.header.progressbar %}

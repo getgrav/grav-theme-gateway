@@ -1,6 +1,6 @@
 {% set theme_config = attribute(config.themes, config.system.pages.theme) %}
 <!DOCTYPE html>
-<html lang="{{ grav.language.getLanguage ?: 'en' }}">
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
 <head>
 {% block head %}
     <meta charset="utf-8" />
@@ -19,7 +19,6 @@
         {% do assets.addCss('theme://css/jetpack.css') %}
     {% endblock %}
 
-    {{ assets.css() }}
     <link rel='stylesheet' id='gateway-fonts-css'  href='//fonts.googleapis.com/css?family=Quattrocento%3A400%2C700%7CFanwood+Text%3A400%2C400italic&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
     {% block javascripts %}
         {% do assets.add('jquery', 101) %}
@@ -32,7 +31,11 @@
         {% do assets.addJs('theme://js/waypoints.min.js') %}
         {% do assets.addJs('theme://js/infinity.js') %}
     {% endblock %}
-    {{ assets.js() }}
+
+    {% block assets deferred %}
+    	{{ assets.css()|raw }}
+      {{ assets.js()|raw }}
+    {% endblock %}
 
 {% endblock head%}
 </head>
@@ -70,11 +73,12 @@
         </div>
         {% if site.copyright %}
         <div class="blog-credits">
-              {{ site.copyright }}
+              {{ site.copyright|raw }}
         </div>
         {% endif %}
       </div>
     </div>
 
+{{ assets.js('bottom')|raw }}
 </body>
 </html>

@@ -6,7 +6,7 @@
       </div>
       {% endif %}
       <div class="rescue-column rescue-one-half rescue-column-last  rescue-all">
-         {{ page.content }}
+         {{ page.content|raw }}
          <p>
            {% for button in page.header.buttons %}
            <a href="{{ button.url }}" class="{{ button.class }}">{{ button.text }}</a>
