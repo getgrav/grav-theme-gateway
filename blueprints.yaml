@@ -1,4 +1,6 @@
 name: Gateway
+slug: gateway
+type: theme
 version: 1.4.0
 description: "Gateway incorporates elegant style with user friendly options making it perfectly suited for a variety of Grav users."
 icon: empire
