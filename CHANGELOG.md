@@ -1,3 +1,9 @@
+# v1.4.1
+## 02/25/2021
+
+1. [](#bugfix)
+    * Fixed some more escaping issuse with title/description
+
 # v1.4.0
 ## 01/15/2021
 
