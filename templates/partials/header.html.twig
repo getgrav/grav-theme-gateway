@@ -55,9 +55,9 @@
       <div class="row">
         <div class="large-8 large-centered columns">
           <aside id="text-3" class="widget widget_text">
-            <h1 class="widget-title">{{ site.header.title }}</h1>
+            <h1 class="widget-title">{{ site.header.title|raw }}</h1>
             <div class="textwidget">
-              <p>{{ site.header.description }}</p>
+              <p>{{ site.header.description|raw }}</p>
               <p>
                 {% for button in site.header.buttons %}
                 <a href="{{ button.url }}" class="{{ button.class }}">{{ button.text }}</a>
