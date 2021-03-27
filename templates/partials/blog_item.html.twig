@@ -12,7 +12,7 @@
     </h3>
     {% if truncate %}
     <div class="entry-date">
-      {{ 'MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}
+      {{ 'GRAV.MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}
     </div>
     {% endif %}
 
@@ -20,8 +20,8 @@
     <div class="entry-meta">
       <span class="posted-on">Posted on
         <a href="{{ page.url }}" rel="bookmark">
-          <time class="entry-date published" datetime="{{ 'MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}">
-            {{ 'MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}
+          <time class="entry-date published" datetime="{{ 'GRAV.MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}">
+            {{ 'GRAV.MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date('d, Y') }}
           </time>
         </a>
       </span>
