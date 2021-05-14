@@ -7,7 +7,7 @@
     <title>{% if header.title %}{{ header.title }} | {% endif %}{{ site.title }}</title>
     {% include 'partials/metadata.html.twig' %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" type="image/png" href="{{ theme_url }}/img/favicon.png" />
+    <link rel="icon" type="image/png" href="{{ theme_url }}/img/{{ site.favicon }}" />
 
     {% block stylesheets %}
         {% do assets.addCss('theme://css/animate.min.css') %}
