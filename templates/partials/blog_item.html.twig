@@ -44,12 +44,14 @@
     {{ page.content|truncate(200, true)|raw }}
     {% elseif truncate and page.summary != page.content %}
     <p>
-      {{ page.summary|striptags }}
-      <a href="{{ page.url }}">more...</a>
+    {{ page.content|replace({'</p>':'<br />'})|striptags('<br>')|truncate(200, true) }}
     </p>
+    {% elseif truncate and page.summary != page.content %}
+    {{ page.summary|striptags('<br><p>') }}
+    <a href="{{ page.url }}">more...</a>
     {% elseif truncate %}
     <p>
-      {{ page.content|truncate(550)|striptags }}
+      {{ page.content|replace({'</p>':'<br />'})|striptags('<br>')|truncate(550) }}
       <a href="{{ page.url }}">more...</a>
     </p>
     {% else %}
