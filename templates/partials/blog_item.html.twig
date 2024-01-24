@@ -192,7 +192,7 @@
   <div class="comments-area-wrapper">
     <div class="comments-area">
     <h2 class="comments-title">Comments:</h2>
-      {{ jscomments(config.plugins.jscomments.provider) }}
+      {{ jscomments() | raw }}
     </div>
   </div>
   {% endif %}
