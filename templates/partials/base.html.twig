@@ -22,6 +22,7 @@
     <link rel='stylesheet' id='gateway-fonts-css'  href='//fonts.googleapis.com/css?family=Quattrocento%3A400%2C700%7CFanwood+Text%3A400%2C400italic&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
     {% block javascripts %}
         {% do assets.add('jquery', 101) %}
+        {% do assets.addJs('theme://js/infinity.js') %}
         {% do assets.addJs('theme://js/foundation.js') %}
         {% do assets.addJs('theme://js/modernizr.custom.js',100) %}
         {% do assets.addJs('theme://js/skip-link-focus-fix.js') %}
@@ -59,11 +60,7 @@
         {% endblock %}
     </div>
 
-    <script type="text/javascript">
-		//<![CDATA[
-		var infiniteScroll = {"settings":{"id":"main","type":"scroll","wrapper":true,"wrapper_class":"infinite-wrap","footer":"page","click_handle":"1","text":"Older posts"}};
-		//]]>
-		</script>
+    
     <div id="infinite-footer">
       <div class="container">
         <div class="blog-info">
@@ -78,6 +75,12 @@
         {% endif %}
       </div>
     </div>
+
+    <script type="text/javascript">
+		//<![CDATA[
+		var infiniteScroll = {"settings":{"id":"main","type":"scroll","wrapper":true,"wrapper_class":"infinite-wrap","footer":"page","click_handle":"1","text":"Older posts"}};
+		//]]>
+		</script>
 
 {{ assets.js('bottom')|raw }}
 </body>
