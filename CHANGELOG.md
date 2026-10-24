@@ -1,3 +1,10 @@
+# v1.4.2
+## 10/23/2026
+
+1. [](#bugfix)
+    * Blog posts with comments no longer fail on Grav 2, which dropped the `array_reverse` filter the comment list used
+    * The blog's infinite scroll loads its script again
+
 # v1.4.1
 ## 02/25/2021
 
