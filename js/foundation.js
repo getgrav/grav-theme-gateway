@@ -316,7 +316,7 @@
         }
       }
 
-      S(window).load(function(){
+      var on_window_load = function(){
         S(window)
           .trigger('resize.fndtn.clearing')
           .trigger('resize.fndtn.dropdown')
@@ -326,7 +326,13 @@
           .trigger('resize.fndtn.magellan')
           .trigger('resize.fndtn.topbar')
           .trigger('resize.fndtn.slider');
-      });
+      };
+      // jQuery 3: .load(fn) is gone and ready can run after window load
+      if (document.readyState === 'complete') {
+        on_window_load();
+      } else {
+        S(window).on('load', on_window_load);
+      }
 
       return scope;
     },
@@ -1256,7 +1262,7 @@
         e.preventDefault();
       });
 
-      image.error(function () {
+      image.on('error', function () {
         error = true;
       });
 
@@ -5527,10 +5533,13 @@
 
       S(window).off(".topbar").on("resize.fndtn.topbar", self.throttle(function() {
           self.resize.call(self);
-      }, 50)).trigger("resize").trigger("resize.fndtn.topbar").load(function(){
+      }, 50)).trigger("resize").trigger("resize.fndtn.topbar").on('load', function(){
           // Ensure that the offset is calculated after all of the pages resources have loaded
           S(this).trigger("resize.fndtn.topbar");
       });
+      if (document.readyState === 'complete') {
+          S(window).trigger("resize.fndtn.topbar");
+      }
 
       S('body').off('.topbar').on('click.fndtn.topbar', function (e) {
         var parent = S(e.target).closest('li').closest('li.hover');
