@@ -1,3 +1,11 @@
+# v1.4.3
+## 10/24/2026
+
+1. [](#bugfix)
+    * Updated the theme's JavaScript to work with jQuery 3, which current Grav versions load
+    * The progress bar shortcode fills its bars again on jQuery 3
+    * The infinite scroll script no longer throws an error on every page, though it can't load more posts because Grav has no endpoint for it
+
 # v1.4.2
 ## 10/23/2026
 

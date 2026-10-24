@@ -10,7 +10,7 @@ if ( isIE ) {
 }
 
 // HTTP ajaxurl when site is HTTPS causes Access-Control-Allow-Origin failure in Desktop and iOS Safari
-if ( "https:" == document.location.protocol ) {
+if ( "https:" == document.location.protocol && 'object' == typeof window.infiniteScroll && infiniteScroll.settings.ajaxurl ) {
 	infiniteScroll.settings.ajaxurl = infiniteScroll.settings.ajaxurl.replace( "http://", "https://" );
 }
 
@@ -188,8 +188,8 @@ Scroller.prototype.refresh = function() {
 	var	self   = this,
 		query, jqxhr, load, loader, color;
 
-	// If we're disabled, ready, or don't pass the check, bail.
-	if ( this.disabled || ! this.ready || ! this.check() )
+	// If we're disabled, ready, have no endpoint to load posts from, or don't pass the check, bail.
+	if ( this.disabled || ! this.ready || ! ajaxurl || ! this.check() )
 		return;
 
 	// Let's get going -- set ready to false to prevent
@@ -481,6 +481,11 @@ Scroller.prototype.checkViewportOnLoad = function( ev ) {
  * Identify archive page that corresponds to majority of posts shown in the current browser window.
  */
 Scroller.prototype.determineURL = function () {
+	// Nothing is ever loaded without an endpoint, so there is no URL to track
+	if ( ! ajaxurl ) {
+		return;
+	}
+
 	var self         = this,
 		windowTop    = $( window ).scrollTop(),
 		windowBottom = windowTop + $( window ).height(),
